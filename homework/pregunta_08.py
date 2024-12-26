@@ -6,8 +6,17 @@ utilizar pandas, numpy o scipy.
 """
 
 
+x = open("files/input/data.csv", "r").readlines()
+x = [linea.strip().split("\t") for linea in x]
+
 def pregunta_08():
-    """
+    tupla=list(set(n[1] for n in x))
+    lista=sorted(list( (int(n) ,list(sorted(set(y[0] for y in x if y[1]==n)))) for n in tupla))
+    return lista
+
+print(pregunta_08())
+
+"""
     Genere una lista de tuplas, donde el primer elemento de cada tupla
     contiene  el valor de la segunda columna; la segunda parte de la tupla
     es una lista con las letras (ordenadas y sin repetir letra) de la
